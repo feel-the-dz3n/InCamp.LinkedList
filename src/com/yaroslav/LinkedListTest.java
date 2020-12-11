@@ -8,9 +8,7 @@ class LinkedListTest {
     void forEach() {
         LinkedList<String> list = new LinkedList<>();
 
-        list.add("one");
-        list.add("two");
-        list.add("three");
+        list.add("one").add("two").add("three");
 
         StringBuilder b = new StringBuilder();
         list.forEach((t) -> b.append(t + " "));
@@ -28,6 +26,18 @@ class LinkedListTest {
         assertEquals(2, list.getSize());
         assertEquals("one", list.getFirst());
         assertEquals("two", list.getLast());
+    }
+
+    @org.junit.jupiter.api.Test
+    void addClass() {
+        LinkedList<Person> list = new LinkedList<>();
+
+        list.add(new Person("Yaroslav", 18));
+        list.add(new Person("Somebody", 22));
+
+        assertEquals(2, list.getSize());
+        assertEquals("Yaroslav", list.getFirst().name);
+        assertEquals("Somebody", list.getLast().name);
     }
 
     @org.junit.jupiter.api.Test
