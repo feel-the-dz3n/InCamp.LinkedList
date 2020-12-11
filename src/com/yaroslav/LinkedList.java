@@ -24,6 +24,23 @@ public class LinkedList {
             consumer.accept(node.value);
     }
 
+    private ListNode getNodeAt(int index) throws Exception {
+        if (index < 0 || index >= size) throw new Exception("Invalid index");
+
+        int i = 0;
+        for (ListNode currentNode = head; currentNode != null; currentNode = currentNode.nextNode, i++) {
+            if (i == index) { // found required index
+                return currentNode;
+            }
+        }
+
+        throw new Exception("Node not found");
+    }
+
+    public String getValueAt(int index) throws Exception {
+        return getNodeAt(index).value;
+    }
+
     public void add(String value) {
         ListNode node = new ListNode(value);
 
@@ -42,7 +59,6 @@ public class LinkedList {
     }
 
     public void insert(String value, int index) throws Exception {
-        if (index < 0 || index >= size) throw new Exception("Invalid index");
 
         ListNode insertedNode = new ListNode(value);
         int i = 0;
@@ -77,9 +93,9 @@ public class LinkedList {
                 else // no prev node, this is the 1st one
                     head = currentNode.nextNode;
 
-                if (currentNode.nextNode != null){
-                    currentNode.nextNode.prevNode = currentNode.prevNode;}
-                else // no next node, this is the last one
+                if (currentNode.nextNode != null) {
+                    currentNode.nextNode.prevNode = currentNode.prevNode;
+                } else // no next node, this is the last one
                     tail = currentNode.prevNode;
 
                 break;
