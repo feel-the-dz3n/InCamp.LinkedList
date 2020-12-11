@@ -31,6 +31,21 @@ class LinkedListTest {
     }
 
     @org.junit.jupiter.api.Test
+    void getValueAt() throws Exception {
+        LinkedList list = new LinkedList();
+
+        list.add("one");
+        list.add("two");
+        list.add("three");
+        list.add("four");
+        list.add("five");
+        list.add("six");
+
+        assertEquals("two", list.getValueAt(1));
+        assertEquals("five", list.getValueAt(4));
+    }
+
+    @org.junit.jupiter.api.Test
     void insert() throws Exception {
         LinkedList list = new LinkedList();
 
