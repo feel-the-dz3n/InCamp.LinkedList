@@ -6,7 +6,7 @@ class LinkedListTest {
 
     @org.junit.jupiter.api.Test
     void forEach() {
-        LinkedList list = new LinkedList();
+        LinkedList<String> list = new LinkedList<>();
 
         list.add("one");
         list.add("two");
@@ -20,7 +20,7 @@ class LinkedListTest {
 
     @org.junit.jupiter.api.Test
     void add() {
-        LinkedList list = new LinkedList();
+        LinkedList<String> list = new LinkedList<>();
 
         list.add("one");
         list.add("two");
@@ -32,7 +32,7 @@ class LinkedListTest {
 
     @org.junit.jupiter.api.Test
     void getValueAt() throws Exception {
-        LinkedList list = new LinkedList();
+        LinkedList<String> list = new LinkedList<>();
 
         list.add("one");
         list.add("two");
@@ -47,7 +47,7 @@ class LinkedListTest {
 
     @org.junit.jupiter.api.Test
     void insert() throws Exception {
-        LinkedList list = new LinkedList();
+        LinkedList<String> list = new LinkedList<>();
 
         list.add("one"); // 0
         list.add("three"); // 1
@@ -64,7 +64,7 @@ class LinkedListTest {
 
     @org.junit.jupiter.api.Test
     void removeAt() throws Exception {
-        LinkedList list = new LinkedList();
+        LinkedList<String> list = new LinkedList<>();
 
         list.add("one");
         list.add("two");
@@ -88,7 +88,7 @@ class LinkedListTest {
 
     @org.junit.jupiter.api.Test
     void addAndRemoveALot() throws Exception {
-        LinkedList list = new LinkedList();
+        LinkedList<String> list = new LinkedList<>();
 
         for (int i = 0; i < 5000; i++)
             list.add("item " + i);
@@ -99,7 +99,7 @@ class LinkedListTest {
 
     @org.junit.jupiter.api.Test
     void removeAtAll() throws Exception {
-        LinkedList list = new LinkedList();
+        LinkedList<String> list = new LinkedList<>();
 
         list.add("one");
         list.add("two");
@@ -125,7 +125,7 @@ class LinkedListTest {
 
     @org.junit.jupiter.api.Test
     void replace() throws Exception {
-        LinkedList list = new LinkedList();
+        LinkedList<String> list = new LinkedList<>();
 
         list.add("one"); // 0
         list.add("two"); // 1
