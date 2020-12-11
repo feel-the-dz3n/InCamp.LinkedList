@@ -41,7 +41,7 @@ public class LinkedList<T> {
         return getNodeAt(index).value;
     }
 
-    public void add(T value) {
+    public LinkedList<T> add(T value) {
         ListNode<T> node = new ListNode<>(value);
 
         if (head == null) // no 1st node
@@ -56,6 +56,8 @@ public class LinkedList<T> {
 
         tail = node; // last = current
         size++;
+
+        return this;
     }
 
     public void insert(T value, int index) throws Exception {
