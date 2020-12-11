@@ -58,7 +58,7 @@ public class LinkedList {
         size++;
     }
 
-    public void insert(String value, int index) throws Exception {
+    public void insert(String value, int index) {
 
         ListNode insertedNode = new ListNode(value);
         int i = 0;
