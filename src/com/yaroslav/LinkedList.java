@@ -70,14 +70,19 @@ public class LinkedList<T> {
         ListNode<T> insertedNode = new ListNode<>(value);
         ListNode<T> currentNode = getNodeAt(index);
 
+        // TODO:  extract method
+
+        // linking the node node
         insertedNode.prevNode = currentNode.prevNode;
         insertedNode.nextNode = currentNode;
 
+        // linking the old node
         if (currentNode.prevNode != null)
             currentNode.prevNode.nextNode = insertedNode;
 
         currentNode.prevNode = insertedNode;
 
+        // checking head and tail
         if (index == 0) head = insertedNode;
         else if (index == size - 1) tail = insertedNode;
 
@@ -86,6 +91,8 @@ public class LinkedList<T> {
 
     public void removeAt(int index) throws Exception {
         ListNode<T> currentNode = getNodeAt(index);
+
+        // TODO:  extract method
 
         if (currentNode.prevNode != null)
             currentNode.prevNode.nextNode = currentNode.nextNode;
@@ -104,16 +111,21 @@ public class LinkedList<T> {
         ListNode<T> newNode = new ListNode<>(newValue);
         ListNode<T> currentNode = getNodeAt(index);
 
+        // TODO:  replace value instead of creating new node
+
+        // relinking with the previous node
         if (currentNode.prevNode != null) {
             currentNode.prevNode.nextNode = newNode;
             newNode.prevNode = currentNode.prevNode;
         }
 
+        // relinking with the next node
         if (currentNode.nextNode != null) {
             currentNode.nextNode.prevNode = newNode;
             newNode.nextNode = currentNode.nextNode;
         }
 
+        // checking head & tail
         if (index == 0) head = newNode;
         else if (index == size - 1) tail = newNode;
     }
