@@ -2,33 +2,33 @@ package com.yaroslav;
 
 import java.util.function.Consumer;
 
-public class LinkedList {
-    private ListNode head;
-    private ListNode tail;
+public class LinkedList<T> {
+    private ListNode<T> head;
+    private ListNode<T> tail;
     private int size;
 
     public int getSize() {
         return size;
     }
 
-    public String getFirst() {
+    public T getFirst() {
         return head.value;
     }
 
-    public String getLast() {
+    public T getLast() {
         return tail.value;
     }
 
-    public void forEach(Consumer<String> consumer) {
-        for (ListNode node = head; node != null; node = node.nextNode)
+    public void forEach(Consumer<T> consumer) {
+        for (ListNode<T> node = head; node != null; node = node.nextNode)
             consumer.accept(node.value);
     }
 
-    private ListNode getNodeAt(int index) throws Exception {
+    private ListNode<T> getNodeAt(int index) throws Exception {
         if (index < 0 || index >= size) throw new Exception("Invalid index");
 
         int i = 0;
-        for (ListNode currentNode = head; currentNode != null; currentNode = currentNode.nextNode, i++) {
+        for (ListNode<T> currentNode = head; currentNode != null; currentNode = currentNode.nextNode, i++) {
             if (i == index) { // found required index
                 return currentNode;
             }
@@ -37,12 +37,12 @@ public class LinkedList {
         throw new Exception("Node not found");
     }
 
-    public String getValueAt(int index) throws Exception {
+    public T getValueAt(int index) throws Exception {
         return getNodeAt(index).value;
     }
 
-    public void add(String value) {
-        ListNode node = new ListNode(value);
+    public void add(T value) {
+        ListNode<T> node = new ListNode<>(value);
 
         if (head == null) // no 1st node
             head = node; // 1st = current
@@ -58,10 +58,9 @@ public class LinkedList {
         size++;
     }
 
-    public void insert(String value, int index) throws Exception {
-
-        ListNode insertedNode = new ListNode(value);
-        ListNode currentNode = getNodeAt(index);
+    public void insert(T value, int index) throws Exception {
+        ListNode<T> insertedNode = new ListNode<>(value);
+        ListNode<T> currentNode = getNodeAt(index);
 
         insertedNode.prevNode = currentNode.prevNode;
         insertedNode.nextNode = currentNode;
@@ -78,7 +77,7 @@ public class LinkedList {
     }
 
     public void removeAt(int index) throws Exception {
-        ListNode currentNode = getNodeAt(index);
+        ListNode<T> currentNode = getNodeAt(index);
 
         if (currentNode.prevNode != null)
             currentNode.prevNode.nextNode = currentNode.nextNode;
@@ -93,9 +92,10 @@ public class LinkedList {
         size--;
     }
 
-    public void replace(String newValue, int index) throws Exception {
-        ListNode newNode = new ListNode(newValue);
-        ListNode currentNode = getNodeAt(index);
+    public void replace(T newValue, int index) throws Exception {
+        ListNode<T> newNode = new ListNode<>(newValue);
+        ListNode<T> currentNode = getNodeAt(index);
+
         if (currentNode.prevNode != null) {
             currentNode.prevNode.nextNode = newNode;
             newNode.prevNode = currentNode.prevNode;

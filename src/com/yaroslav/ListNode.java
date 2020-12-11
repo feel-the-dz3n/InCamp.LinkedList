@@ -1,11 +1,11 @@
 package com.yaroslav;
 
-public class ListNode {
-    public String value;
-    public ListNode nextNode;
-    public ListNode prevNode;
+public class ListNode<T> {
+    public T value;
+    public ListNode<T> nextNode;
+    public ListNode<T> prevNode;
 
-    public ListNode(String value) {
+    public ListNode(T value) {
         this.value = value;
     }
 }
