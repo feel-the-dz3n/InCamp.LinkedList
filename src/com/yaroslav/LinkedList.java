@@ -27,11 +27,17 @@ public class LinkedList<T> {
     private ListNode<T> getNodeAt(int index) throws Exception {
         if (index < 0 || index >= size) throw new Exception("Invalid index");
 
-        int i = 0;
-        for (ListNode<T> currentNode = head; currentNode != null; currentNode = currentNode.nextNode, i++) {
-            if (i == index) { // found required index
-                return currentNode;
-            }
+        var startFromHead = size < 4 || index < (size - 1) / 2;
+        int i = startFromHead ? 0 : size - 1;
+        ListNode<T> currentNode = startFromHead ? head : tail;
+
+        while (currentNode != null) {
+            if (i == index) return currentNode;
+
+            currentNode = startFromHead ? currentNode.nextNode : currentNode.prevNode;
+
+            if (startFromHead) i++;
+            else i--;
         }
 
         throw new Exception("Node not found");
